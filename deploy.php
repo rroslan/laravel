@@ -17,16 +17,16 @@ add('shared_files', []);
 add('shared_dirs', []);
 
 // Writable dirs by web server
-set('http_user', 'www-data');
+//set('http_user', 'www-data');
 add('writable_dirs', []);
 
 
 // Hosts
 
-host('www.eastservices.biz')
+host('206.189.88.23')
     ->user('deployer')
     ->identityFile('~/.ssh/deployer')
-    ->set('deploy_path', '/var/www/laravel');
+    ->set('deploy_path', '/var/www/html/laravel');
     
 // Tasks
 
@@ -39,5 +39,5 @@ after('deploy:failed', 'deploy:unlock');
 
 //Migrate database before symlink new release.
 
-before('deploy:symlink', 'artisan:migrate');
+//before('deploy:symlink', 'artisan:migrate');
 
