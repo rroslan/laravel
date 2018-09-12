@@ -16,7 +16,8 @@ set('git_tty', true);
 add('shared_files', []);
 add('shared_dirs', []);
 
-// Writable dirs by web server 
+// Writable dirs by web server
+set('http_user', 'www-data');
 add('writable_dirs', []);
 
 
@@ -36,7 +37,7 @@ task('build', function () {
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
 
-// Migrate database before symlink new release.
+//Migrate database before symlink new release.
 
-//before('deploy:symlink', 'artisan:migrate');
+before('deploy:symlink', 'artisan:migrate');
 
